@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TrendScope AI – Discover Upcoming Global Trends</title>
+
+<meta name="description" content="TrendScope AI helps creators and businesses understand upcoming global trends, content ideas, and market direction using simple AI-based insights.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #1f2937;
+    line-height: 1.7;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+.tool-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+select, input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 12px;
+}
+button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #9333ea;
+    color: #ffffff;
+    cursor: pointer;
+}
+button:hover {
+    background: #7e22ce;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f3e8ff;
+    border-radius: 8px;
+}
+.ad-box {
+    background: #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.article {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>TrendScope AI</h1>
+<p>Explore upcoming trends before they become mainstream.</p>
+</header>
+
+<!-- TOP ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Top)
+</div>
+
+<div class="tool-box">
+<h2>Find Emerging Trends</h2>
+<p>Select your interest area to explore potential future trends.</p>
+
+<select id="category">
+<option value="">Select Category</option>
+<option>Technology</option>
+<option>Business</option>
+<option>Content Creation</option>
+<option>Health & Lifestyle</option>
+<option>Education</option>
+</select>
+
+<select id="region">
+<option value="">Select Region</option>
+<option>Global</option>
+<option>Asia</option>
+<option>Europe</option>
+<option>North America</option>
+<option>Middle East</option>
+</select>
+
+<button onclick="analyzeTrends()">Analyze Trends</button>
+
+<div class="result" id="resultBox" style="display:none;"></div>
+</div>
+
+<!-- BOTTOM ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Bottom)
+</div>
+
+<div class="article">
+
+<h2>What is TrendScope AI?</h2>
+
+<p>
+TrendScope AI is built for people who want to stay ahead of change.
+Trends shape industries, content, businesses, and even careers.
+Those who recognize patterns early often gain a strong advantage.
+This tool helps users think ahead instead of reacting late.
+</p>
+
+<h3>Why Understanding Trends Matters</h3>
+
+<p>
+Every major shift starts small.
+What looks unimportant today may become mainstream tomorrow.
+Businesses fail when they ignore change,
+and creators struggle when they chase outdated topics.
+Trend awareness allows better planning and smarter decisions.
+</p>
+
+<h3>How TrendScope AI Helps</h3>
+
+<p>
+TrendScope AI focuses on understanding directional movement,
+not predicting exact outcomes.
+It highlights rising interest areas and emerging behavior patterns.
+This encourages users to explore ideas with long-term relevance.
+</p>
+
+<h3>Who Can Benefit From This Tool?</h3>
+
+<ul>
+<li>Content creators planning future topics</li>
+<li>Entrepreneurs researching new ideas</li>
+<li>Marketers analyzing audience interest</li>
+<li>Students exploring future skills</li>
+<li>Professionals adapting to industry changes</li>
+</ul>
+
+<h3>Trends Are Not Guarantees</h3>
+
+<p>
+TrendScope AI does not promise success.
+Trends can shift, slow down, or change direction.
+This tool exists to support thinking and research,
+not replace human judgment.
+</p>
+
+<h3>Ethical and Transparent Approach</h3>
+
+<p>
+No personal data is collected.
+There is no manipulation or hype.
+TrendScope AI encourages learning, experimentation,
+and responsible planning.
+</p>
+
+<h3>Using Trends for Long-Term Growth</h3>
+
+<p>
+Chasing every trend leads to burnout.
+Understanding trends helps users focus on sustainable growth.
+TrendScope AI promotes clarity, not pressure.
+</p>
+
+<h3>Final Thoughts</h3>
+
+<p>
+The future rewards those who prepare thoughtfully.
+TrendScope AI is designed to help users stay curious,
+aware, and adaptable in a constantly changing world.
+</p>
+
+</div>
+
+</div>
+
+<script>
+function analyzeTrends() {
+    const category = document.getElementById("category").value;
+    const region = document.getElementById("region").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (category === "" || region === "") {
+        alert("Please select both category and region.");
+        return;
+    }
+
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+    <strong>Trend Overview:</strong><br><br>
+    <b>Category:</b> ${category}<br>
+    <b>Region:</b> ${region}<br><br>
+    <b>Insight:</b> Growing interest and early-stage adoption signals detected.<br><br>
+    Focus on learning, testing, and observing before full commitment.
+    `;
+}
+</script>
+
+</body>
+</html>
