@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DecisionSim AI – Simulate Smarter Life Decisions</title>
+
+<meta name="description" content="DecisionSim AI helps you simulate future outcomes of life and business decisions using smart AI-based logic. Make better choices with clarity.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    color: #222;
+    line-height: 1.7;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+.tool-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover {
+    background: #3730a3;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eef2ff;
+    border-radius: 8px;
+}
+.ad-box {
+    background: #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.article {
+    margin-top: 40px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>DecisionSim AI</h1>
+<p>Simulate future outcomes before making important life or business decisions.</p>
+</header>
+
+<!-- TOP ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Top)
+</div>
+
+<div class="tool-box">
+<h2>Enter Your Decision</h2>
+<p>Describe the decision you are thinking about. Be honest and clear.</p>
+
+<textarea id="decisionInput" placeholder="Example: Should I quit my job and start an online business?"></textarea>
+
+<button onclick="simulateDecision()">Simulate Decision</button>
+
+<div class="result" id="resultBox" style="display:none;"></div>
+</div>
+
+<!-- BOTTOM ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Bottom)
+</div>
+
+<div class="article">
+<h2>What is DecisionSim AI and How Does It Help?</h2>
+
+<p>
+DecisionSim AI is designed for people who often find themselves confused while making important life or business decisions.
+In real life, we rarely have the ability to clearly see future outcomes. Most decisions are made using emotions,
+limited information, or pressure from others. This is where DecisionSim AI becomes useful.
+</p>
+
+<p>
+Instead of telling you what to do, this tool helps you think clearly. It breaks your decision into logical outcomes,
+possible risks, and realistic expectations. The goal is not prediction, but clarity.
+</p>
+
+<h3>Why People Struggle With Decisions</h3>
+
+<p>
+Modern life is fast. We are constantly required to choose between multiple options — career changes,
+relationships, investments, learning new skills, or even moving to a new country. Each choice feels risky because
+we do not know what will happen next.
+</p>
+
+<p>
+DecisionSim AI acts like a calm thinking partner. It does not judge. It does not pressure.
+It simply analyzes the situation logically and shows you possible paths.
+</p>
+
+<h3>How DecisionSim AI Works</h3>
+
+<p>
+When you enter a decision, the tool evaluates it using structured reasoning.
+It considers emotional impact, effort required, potential reward, and uncertainty.
+Based on this, it creates three general outcome paths:
+</p>
+
+<ul>
+<li>Best-case scenario</li>
+<li>Worst-case scenario</li>
+<li>Most realistic middle path</li>
+</ul>
+
+<p>
+This approach helps the human brain understand risk more clearly.
+Instead of vague fear, you see structured possibilities.
+</p>
+
+<h3>Daily Use Cases</h3>
+
+<p>
+DecisionSim AI is not limited to big life decisions.
+Many users find it helpful for daily thinking:
+</p>
+
+<ul>
+<li>Choosing between two job offers</li>
+<li>Deciding whether to learn a new skill</li>
+<li>Planning a side business</li>
+<li>Handling relationship choices</li>
+<li>Evaluating long-term goals</li>
+</ul>
+
+<p>
+The more clearly you describe your situation, the better insight you receive.
+</p>
+
+<h3>Why This Tool is Safe and Ethical</h3>
+
+<p>
+DecisionSim AI does not collect personal data.
+Your input stays inside your browser.
+There is no guarantee or promise of success.
+This tool exists to support thinking, not replace it.
+</p>
+
+</div>
+
+</div>
+
+<script>
+function simulateDecision() {
+    const input = document.getElementById("decisionInput").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (input.trim() === "") {
+        alert("Please enter a decision.");
+        return;
+    }
+
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+    <strong>Decision Analysis:</strong><br><br>
+    <b>Best-Case:</b> If things go well, this decision may lead to personal growth and positive outcomes.<br><br>
+    <b>Worst-Case:</b> Challenges, delays, or unexpected difficulties may occur.<br><br>
+    <b>Most Realistic:</b> Mixed results with learning opportunities and gradual progress.<br><br>
+    Remember: clarity improves confidence.
+    `;
+}
+</script>
+
+</body>
+  </html>
