@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpeedFix AI – Website Speed & SEO Analyzer</title>
+
+<meta name="description" content="SpeedFix AI helps you understand website speed and SEO issues in a simple way. Improve performance, loading time, and user experience.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #1f2937;
+    line-height: 1.7;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+.tool-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #16a34a;
+    color: #ffffff;
+    cursor: pointer;
+}
+button:hover {
+    background: #15803d;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ecfdf5;
+    border-radius: 8px;
+}
+.ad-box {
+    background: #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.article {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>SpeedFix AI</h1>
+<p>Understand and improve your website speed and SEO performance.</p>
+</header>
+
+<!-- TOP ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Top)
+</div>
+
+<div class="tool-box">
+<h2>Analyze Your Website</h2>
+<p>Enter your website URL to understand speed and SEO issues.</p>
+
+<input type="text" id="siteInput" placeholder="https://example.com">
+
+<button onclick="analyzeSite()">Analyze Website</button>
+
+<div class="result" id="resultBox" style="display:none;"></div>
+</div>
+
+<!-- BOTTOM ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Bottom)
+</div>
+
+<div class="article">
+
+<h2>What is SpeedFix AI?</h2>
+
+<p>
+SpeedFix AI is a simple tool designed for website owners, bloggers, and small businesses
+who want to understand why their website feels slow or does not perform well on search engines.
+Many people believe speed optimization is only for developers, but that is not true.
+SpeedFix AI explains performance issues in plain human language.
+</p>
+
+<h3>Why Website Speed Matters</h3>
+
+<p>
+Website speed is no longer optional. Users expect pages to load quickly,
+especially on mobile devices. A slow website increases bounce rate,
+reduces user trust, and can negatively affect search engine rankings.
+</p>
+
+<p>
+Search engines prioritize fast and user-friendly websites.
+Even a one-second delay can reduce conversions and engagement.
+</p>
+
+<h3>Common Problems SpeedFix AI Helps You Understand</h3>
+
+<ul>
+<li>Heavy images slowing down pages</li>
+<li>Unnecessary scripts and files</li>
+<li>Poor mobile optimization</li>
+<li>Lack of basic SEO structure</li>
+<li>Slow loading due to bad layout practices</li>
+</ul>
+
+<h3>How SpeedFix AI Works</h3>
+
+<p>
+SpeedFix AI does not run complex backend scans.
+Instead, it focuses on helping users understand the most common performance issues
+and what actions they should take next.
+</p>
+
+<p>
+By entering a website URL, users receive a simplified analysis
+that explains speed and SEO factors clearly.
+</p>
+
+<h3>Who Should Use SpeedFix AI?</h3>
+
+<p>
+This tool is useful for:
+</p>
+
+<ul>
+<li>Bloggers running AdSense websites</li>
+<li>Small business owners</li>
+<li>Portfolio website owners</li>
+<li>Freelancers and creators</li>
+<li>People learning SEO basics</li>
+</ul>
+
+<h3>Mobile Performance is Critical</h3>
+
+<p>
+Most internet users browse on mobile phones.
+If your website is not optimized for mobile speed,
+you lose visitors automatically.
+SpeedFix AI encourages mobile-first thinking.
+</p>
+
+<h3>SEO and Speed Go Together</h3>
+
+<p>
+A fast website improves SEO indirectly.
+Better user experience leads to longer sessions and lower bounce rates.
+SpeedFix AI explains this connection in simple terms.
+</p>
+
+<h3>Safe, Educational, and Transparent</h3>
+
+<p>
+SpeedFix AI does not promise ranking guarantees.
+It does not manipulate search engines.
+Its purpose is to educate users and encourage good web practices.
+</p>
+
+<h3>Final Words</h3>
+
+<p>
+Improving website speed does not require advanced technical knowledge.
+With the right understanding, anyone can take small steps
+that make a big difference.
+SpeedFix AI exists to simplify that learning process.
+</p>
+
+</div>
+
+</div>
+
+<script>
+function analyzeSite() {
+    const site = document.getElementById("siteInput").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (site.trim() === "") {
+        alert("Please enter a website URL.");
+        return;
+    }
+
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+    <strong>Website Analysis Summary:</strong><br><br>
+    <b>Speed Insight:</b> Page speed can be improved by optimizing images and reducing unnecessary scripts.<br><br>
+    <b>SEO Insight:</b> Ensure proper headings, meta descriptions, and mobile responsiveness.<br><br>
+    <b>User Experience:</b> Faster load times improve trust and engagement.
+    `;
+}
+</script>
+
+</body>
+</html>
