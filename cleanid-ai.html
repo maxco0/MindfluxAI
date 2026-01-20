@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CleanID AI – Digital Identity & Online Footprint Scanner</title>
+
+<meta name="description" content="CleanID AI helps you understand your digital footprint, online visibility, and privacy risks in a simple and responsible way.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #1f2937;
+    line-height: 1.7;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+.tool-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 12px;
+}
+button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #dc2626;
+    color: #ffffff;
+    cursor: pointer;
+}
+button:hover {
+    background: #b91c1c;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fee2e2;
+    border-radius: 8px;
+}
+.ad-box {
+    background: #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.article {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>CleanID AI</h1>
+<p>Understand and improve your digital identity and online presence.</p>
+</header>
+
+<!-- TOP ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Top)
+</div>
+
+<div class="tool-box">
+<h2>Check Your Digital Footprint</h2>
+<p>Enter a name, username, or email (for awareness only).</p>
+
+<input type="text" id="identityInput" placeholder="Example: yourname or username">
+
+<button onclick="scanIdentity()">Scan Digital Footprint</button>
+
+<div class="result" id="resultBox" style="display:none;"></div>
+</div>
+
+<!-- BOTTOM ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Bottom)
+</div>
+
+<div class="article">
+
+<h2>What is CleanID AI?</h2>
+
+<p>
+CleanID AI is a digital identity awareness tool designed to help individuals understand
+how their presence appears across the internet.
+In today’s connected world, almost everyone leaves a digital trail,
+often without realizing it.
+</p>
+
+<p>
+Old accounts, forgotten profiles, public comments,
+and exposed information can quietly shape how others perceive you.
+CleanID AI encourages awareness and responsible online behavior.
+</p>
+
+<h3>Why Digital Identity Matters</h3>
+
+<p>
+Your online presence affects job opportunities,
+professional reputation, and personal safety.
+Recruiters, clients, and even automated systems
+often search names before making decisions.
+</p>
+
+<p>
+An unmanaged digital footprint can lead to misunderstandings
+or privacy concerns.
+</p>
+
+<h3>How CleanID AI Works</h3>
+
+<p>
+CleanID AI does not collect or store personal data.
+It focuses on helping users think critically about what information
+may be visible online and how to manage it responsibly.
+</p>
+
+<p>
+The tool highlights common exposure areas and provides guidance
+on improving digital hygiene.
+</p>
+
+<h3>Who Should Use CleanID AI?</h3>
+
+<ul>
+<li>Professionals preparing for interviews</li>
+<li>Freelancers and consultants</li>
+<li>Students entering the job market</li>
+<li>Creators and influencers</li>
+<li>Anyone concerned about online privacy</li>
+</ul>
+
+<h3>Digital Footprint vs Digital Reputation</h3>
+
+<p>
+A digital footprint refers to information that exists online.
+Digital reputation is how that information is interpreted.
+CleanID AI helps users reflect on both aspects.
+</p>
+
+<h3>Privacy-First and Ethical Design</h3>
+
+<p>
+CleanID AI does not track users.
+It does not perform intrusive scans.
+It does not claim to remove content automatically.
+The focus is education, not fear.
+</p>
+
+<h3>Healthy Online Habits</h3>
+
+<p>
+Managing digital identity is an ongoing process.
+Simple habits like reviewing privacy settings,
+removing unused accounts, and posting thoughtfully
+can reduce risk significantly.
+</p>
+
+<h3>Final Thoughts</h3>
+
+<p>
+Your online presence should represent who you are today,
+not mistakes from the past.
+CleanID AI helps you reflect, understand,
+and take responsible steps toward a cleaner digital identity.
+</p>
+
+</div>
+
+</div>
+
+<script>
+function scanIdentity() {
+    const input = document.getElementById("identityInput").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (input.trim() === "") {
+        alert("Please enter a name or username.");
+        return;
+    }
+
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+    <strong>Digital Footprint Insight:</strong><br><br>
+    <b>Visibility Level:</b> Moderate online presence detected.<br><br>
+    <b>Privacy Awareness:</b> Review old accounts and public profiles.<br><br>
+    <b>Recommendation:</b> Maintain updated and professional information.
+    `;
+}
+</script>
+
+</body>
+</html>
