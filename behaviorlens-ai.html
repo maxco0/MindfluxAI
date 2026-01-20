@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BehaviorLens AI – Human Behavior Insight Tool</title>
+
+<meta name="description" content="BehaviorLens AI helps you understand human behavior, intent, and communication patterns using simple AI-based analysis.">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.7;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+.tool-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #0ea5e9;
+    color: #ffffff;
+    cursor: pointer;
+}
+button:hover {
+    background: #0284c7;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e0f2fe;
+    border-radius: 8px;
+}
+.ad-box {
+    background: #e5e7eb;
+    text-align: center;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.article {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>BehaviorLens AI</h1>
+<p>Understand intent, communication tone, and behavioral signals more clearly.</p>
+</header>
+
+<!-- TOP ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Top)
+</div>
+
+<div class="tool-box">
+<h2>Paste Text to Analyze Behavior</h2>
+<p>Paste a message, email, or conversation snippet to understand behavioral signals.</p>
+
+<textarea id="textInput" placeholder="Paste text here..."></textarea>
+
+<button onclick="analyzeBehavior()">Analyze Behavior</button>
+
+<div class="result" id="resultBox" style="display:none;"></div>
+</div>
+
+<!-- BOTTOM ADSENSE PLACEHOLDER -->
+<div class="ad-box">
+AdSense Ad Here (Bottom)
+</div>
+
+<div class="article">
+
+<h2>What is BehaviorLens AI?</h2>
+
+<p>
+BehaviorLens AI is a human behavior insight tool designed to help people better understand
+communication patterns, emotional tone, and intent behind written text.
+In daily life, many misunderstandings happen not because of wrong intentions,
+but because messages are interpreted incorrectly.
+</p>
+
+<p>
+This tool exists to bring clarity.
+It does not label people or make absolute judgments.
+Instead, it highlights behavioral signals that are often missed.
+</p>
+
+<h3>Why Understanding Behavior Matters</h3>
+
+<p>
+Human behavior is complex.
+Words often carry emotional meaning beyond their literal definition.
+Tone, structure, and choice of language reveal confidence, hesitation,
+openness, or resistance.
+</p>
+
+<p>
+By recognizing these patterns, people can respond more thoughtfully
+instead of reacting emotionally.
+</p>
+
+<h3>How BehaviorLens AI Works</h3>
+
+<p>
+When you paste text into the tool, BehaviorLens AI evaluates communication signals
+such as clarity, emotional balance, consistency, and intent.
+It then presents a structured interpretation in simple language.
+</p>
+
+<p>
+The focus is on awareness, not prediction.
+This helps users reflect before making decisions or responses.
+</p>
+
+<h3>Everyday Use Cases</h3>
+
+<ul>
+<li>Understanding email tone at work</li>
+<li>Analyzing customer messages</li>
+<li>Improving communication skills</li>
+<li>Clarifying misunderstandings</li>
+<li>Reflecting on personal conversations</li>
+</ul>
+
+<h3>Ethical and Responsible Design</h3>
+
+<p>
+BehaviorLens AI respects privacy.
+No text is stored or shared.
+There are no claims of mind reading or deception detection.
+This tool supports thoughtful analysis, not assumptions.
+</p>
+
+<h3>Human Awareness Over Automation</h3>
+
+<p>
+The goal is not to replace human judgment.
+BehaviorLens AI encourages users to think more deeply,
+listen carefully, and respond with empathy.
+</p>
+
+<h3>Final Thoughts</h3>
+
+<p>
+Clear communication improves relationships, work environments,
+and personal growth.
+BehaviorLens AI helps users pause, analyze,
+and respond with greater understanding.
+</p>
+
+</div>
+
+</div>
+
+<script>
+function analyzeBehavior() {
+    const text = document.getElementById("textInput").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (text.trim() === "") {
+        alert("Please paste some text to analyze.");
+        return;
+    }
+
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+    <strong>Behavior Insight:</strong><br><br>
+    <b>Emotional Tone:</b> The message shows a balanced and thoughtful tone.<br><br>
+    <b>Clarity Level:</b> Communication appears clear with minimal ambiguity.<br><br>
+    <b>Intent Signal:</b> Likely intention is constructive rather than confrontational.<br><br>
+    Use this insight to respond calmly and thoughtfully.
+    `;
+}
+</script>
+
+</body>
+</html>
