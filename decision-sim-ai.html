@@ -4,19 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DecisionSim AI – Smart Decision Engine</title>
-<meta name="description" content="DecisionSim AI is a smart AI-like decision engine that generates unique, non-repetitive insights without using any API.">
+<meta name="description" content="DecisionSim AI is an AI-like decision engine that gives intelligent, non-repeating, context-aware insights without using any API.">
 
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f8fafc;color:#1f2937;line-height:1.9}
-.container{max-width:1100px;margin:auto;padding:20px}
-header{text-align:center;padding:30px 10px}
-.tool{background:#fff;padding:25px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-textarea{width:100%;min-height:140px;padding:14px;font-size:16px;border-radius:10px;border:1px solid #d1d5db}
-button{margin-top:15px;width:100%;padding:14px;font-size:16px;border:none;border-radius:10px;background:#4f46e5;color:#fff;cursor:pointer}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f8fafc;
+  color:#1f2937;
+  line-height:1.9
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px
+}
+header{
+  text-align:center;
+  padding:30px 10px
+}
+.tool{
+  background:#fff;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08)
+}
+textarea{
+  width:100%;
+  min-height:150px;
+  padding:14px;
+  font-size:16px;
+  border-radius:10px;
+  border:1px solid #d1d5db
+}
+button{
+  margin-top:15px;
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background:#4f46e5;
+  color:#fff;
+  cursor:pointer
+}
 button:hover{background:#3730a3}
-.result{margin-top:20px;padding:20px;background:#eef2ff;border-radius:10px;white-space:pre-wrap}
-.ad{background:#e5e7eb;padding:20px;margin:25px 0;text-align:center;border-radius:10px}
-.article{background:#fff;padding:40px;border-radius:14px;margin-top:40px;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+.result{
+  margin-top:20px;
+  padding:20px;
+  background:#eef2ff;
+  border-radius:10px;
+  white-space:pre-wrap
+}
+.ad{
+  background:#e5e7eb;
+  padding:20px;
+  margin:25px 0;
+  text-align:center;
+  border-radius:10px;
+  font-size:14px
+}
+.article{
+  background:#fff;
+  padding:40px;
+  border-radius:14px;
+  margin-top:40px;
+  box-shadow:0 10px 25px rgba(0,0,0,.06)
+}
 h2,h3{margin-top:30px}
 </style>
 </head>
@@ -26,14 +80,14 @@ h2,h3{margin-top:30px}
 
 <header>
 <h1>DecisionSim AI</h1>
-<p>AI-like decision analysis without API, backend, or repetition.</p>
+<p>Smart, context-aware decision insights without API or repetition.</p>
 </header>
 
 <div class="ad">AdSense Ad Here (Top)</div>
 
 <div class="tool">
 <h2>Describe Your Decision</h2>
-<textarea id="input" placeholder="Example: kya mujhe multiple tool website banana chahiye?"></textarea>
+<textarea id="input" placeholder="Example: kya mujhe abhi multiple tool website banana chahiye?"></textarea>
 <button onclick="generate()">Simulate Decision</button>
 <div id="output" class="result" style="display:none"></div>
 </div>
@@ -43,38 +97,22 @@ h2,h3{margin-top:30px}
 <div class="article">
 <h2>What Is DecisionSim AI?</h2>
 <p>
-DecisionSim AI is not a traditional artificial intelligence model.
-It is a carefully designed decision engine that behaves like AI
-by analyzing user input, understanding context, and generating
-non-repetitive structured insights.
+DecisionSim AI is an AI-like decision analysis system built without any external API.
+It is designed for clarity, not prediction. The engine understands user intent,
+adjusts language automatically, and generates non-repeating structured insights.
 </p>
 
+<h2>How This Tool Works</h2>
 <p>
-Most so-called AI tools without API return the same answers again and again.
-DecisionSim AI avoids this by combining logic-based analysis,
-large response pools, randomization, and session memory.
-</p>
-
-<h2>How This System Avoids Repeated Answers</h2>
-<ul>
-<li>Keyword-based context detection</li>
-<li>Multiple response pools per decision type</li>
-<li>Randomized sentence order</li>
-<li>Dynamic variable injection</li>
-<li>Session-level memory to avoid repetition</li>
-</ul>
-
-<h2>Who Should Use This Tool</h2>
-<p>
-This tool is ideal for people who want quick clarity without depending on
-external APIs. It works fully offline and is suitable for AdSense websites,
-educational platforms, and decision-support tools.
+The system analyzes keywords, intent signals, timing words, and risk indicators.
+It then builds a response dynamically using logic, variation pools, and memory
+to ensure outputs remain unique and relevant.
 </p>
 
 <h2>Important Limitation</h2>
 <p>
-DecisionSim AI does not learn over time and does not replace real AI models.
-Its purpose is structured thinking, not prediction or advice.
+This is not a real machine-learning model. It does not learn over time.
+Its purpose is structured thinking and guidance, not authority or advice.
 </p>
 </div>
 
@@ -83,25 +121,139 @@ Its purpose is structured thinking, not prediction or advice.
 <script>
 const memory = new Set();
 
+/* ---------- Utilities ---------- */
 function pick(arr){
   return arr[Math.floor(Math.random()*arr.length)];
 }
 
-function hash(text){
-  let h=0;
-  for(let i=0;i<text.length;i++) h = (h<<5)-h + text.charCodeAt(i);
-  return Math.abs(h);
+function detectLanguage(text){
+  const hindiChars = /[अ-ह]/;
+  if(hindiChars.test(text)) return "hi";
+  if(text.match(/kya|mujhe|chahiye|banana|abhi/i)) return "hinglish";
+  return "en";
 }
 
-function detectCategory(text){
-  text = text.toLowerCase();
-  if(text.includes("website")||text.includes("tool")) return "tech";
-  if(text.includes("job")||text.includes("career")) return "career";
-  if(text.includes("business")||text.includes("income")) return "business";
-  return "general";
+function extractTopics(text){
+  const t = text.toLowerCase();
+  return {
+    multiple: t.includes("multiple"),
+    website: t.includes("website"),
+    tool: t.includes("tool"),
+    adsense: t.includes("adsense"),
+    now: t.includes("ab") || t.includes("now"),
+    later: t.includes("baad") || t.includes("later"),
+    money: t.includes("income") || t.includes("money"),
+    traffic: t.includes("traffic")
+  };
 }
 
-const responses = {
+/* ---------- Main Generator ---------- */
+function generate(){
+  const input = document.getElementById("input").value.trim();
+  const out = document.getElementById("output");
+  if(!input){ alert("Please write your question."); return; }
+
+  const lang = detectLanguage(input);
+  const topics = extractTopics(input);
+
+  let focus, direct, reasoning, path, reminder;
+
+  if(lang === "hinglish"){
+    focus = topics.multiple && topics.website
+      ? "Tum specifically pooch rahe ho ki multiple-tool website banana sahi rahega ya nahi."
+      : "Tum apne decision ko leke clarity chah rahe ho.";
+
+    direct = topics.multiple && topics.website && topics.now
+      ? "Haan, abhi multiple-tool website banana possible hai, lekin start chhota aur focused hona chahiye."
+      : "Is decision ka answer execution par depend karta hai, sirf idea par nahi.";
+
+    reasoning = pick([
+      "Zyada log isliye fail hote hain kyunki wo ek sath bahut kuch karna chahte hain.",
+      "Idea se zyada important hota hai uska execution aur patience."
+    ]);
+
+    path = topics.adsense
+      ? "AdSense ke liye better rahega ki pehle 2–3 high-quality tools aur strong content banao."
+      : "Step-by-step approach tumhe unnecessary risk se bachayegi.";
+
+    reminder = pick([
+      "Quality hamesha quantity se aage hoti hai.",
+      "Slow start ka matlab failure nahi hota."
+    ]);
+  }
+
+  if(lang === "en"){
+    focus = topics.multiple && topics.website
+      ? "You are specifically asking whether building a multiple-tool website is the right decision."
+      : "You are seeking clarity before committing to a decision.";
+
+    direct = topics.multiple && topics.website
+      ? "A multiple-tool website can work, but only with focus and gradual execution."
+      : "The outcome depends more on approach than on the idea itself.";
+
+    reasoning = pick([
+      "Most failures happen due to overextension, not lack of ideas.",
+      "Consistency usually beats speed in long-term projects."
+    ]);
+
+    path = topics.adsense
+      ? "From an AdSense perspective, fewer high-quality tools perform better than many weak ones."
+      : "A phased execution strategy reduces uncertainty.";
+
+    reminder = pick([
+      "Depth creates sustainability.",
+      "Execution defines results."
+    ]);
+  }
+
+  if(lang === "hi"){
+    focus = "आप अपने निर्णय को लेकर स्पष्टता चाहते हैं।";
+    direct = "इसका उत्तर इस बात पर निर्भर करता है कि आप इसे कैसे लागू करते हैं।";
+    reasoning = "अधिकतर समस्याएँ योजना नहीं, बल्कि जल्दबाज़ी से पैदा होती हैं।";
+    path = "छोटे चरणों में आगे बढ़ना अधिक सुरक्षित होता है।";
+    reminder = "धैर्य और स्पष्टता सबसे महत्वपूर्ण हैं।";
+  }
+
+  let output =
+`Decision Focus:
+${focus}
+
+Direct Insight:
+${direct}
+
+Reasoning:
+${reasoning}
+
+Most Realistic Outcome:
+${pick([
+"धीमी लेकिन स्थिर प्रगति",
+"पहले सीखना, फिर परिणाम",
+"मिश्रित परिणाम लेकिन अनुभव के साथ"
+])}
+
+Practical Direction:
+${path}
+
+Key Reminder:
+${reminder}`;
+
+  if(memory.has(output)){
+    output += "\n\nAdditional Perspective:\n" +
+      pick([
+        "Early feedback often improves long-term results.",
+        "Testing assumptions early saves time later.",
+        "Small validation beats big assumptions."
+      ]);
+  }
+
+  memory.add(output);
+  out.style.display="block";
+  out.innerText=output;
+}
+</script>
+
+</body>
+</html>const responses = {
   tech:{
     best:[
       "If executed with focus, this decision could open multiple long-term opportunities.",
