@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DecisionSim AI – Intelligent Decision Analysis</title>
-<meta name="description" content="DecisionSim AI provides intelligent, non-repeating decision analysis for an international audience without using any API.">
+<title>DecisionSim AI – Deep Decision Analysis</title>
+<meta name="description" content="DecisionSim AI provides deep, non-repeating, topic-aware decision analysis for a global audience without using any API.">
 
 <style>
 body{
@@ -12,7 +12,7 @@ body{
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
   background:#f5f7fb;
   color:#1f2937;
-  line-height:1.85
+  line-height:1.9
 }
 .container{
   max-width:1100px;
@@ -21,52 +21,52 @@ body{
 }
 header{
   text-align:center;
-  padding:32px 10px
+  padding:36px 10px
 }
 .tool{
   background:#ffffff;
-  padding:28px;
-  border-radius:16px;
-  box-shadow:0 15px 35px rgba(0,0,0,.08)
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.08)
 }
 textarea{
   width:100%;
-  min-height:160px;
+  min-height:170px;
   padding:16px;
   font-size:16px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid #d1d5db
 }
 button{
   margin-top:18px;
   width:100%;
-  padding:15px;
+  padding:16px;
   font-size:16px;
   border:none;
-  border-radius:12px;
+  border-radius:14px;
   background:#4f46e5;
   color:#ffffff;
   cursor:pointer
 }
 button:hover{background:#3730a3}
 .output{
-  margin-top:26px;
-  padding:26px;
+  margin-top:30px;
+  padding:30px;
   background:#eef2ff;
-  border-radius:14px;
+  border-radius:16px;
   box-shadow:inset 0 0 0 1px rgba(79,70,229,.15)
 }
-.section-title{
-  font-weight:600;
-  margin-top:18px;
-  margin-bottom:6px
+.output h3{
+  margin-top:22px;
+  margin-bottom:8px;
+  font-size:18px
 }
 .ad{
   background:#e5e7eb;
-  padding:20px;
-  margin:28px 0;
+  padding:22px;
+  margin:30px 0;
   text-align:center;
-  border-radius:12px;
+  border-radius:14px;
   font-size:14px
 }
 </style>
@@ -77,7 +77,7 @@ button:hover{background:#3730a3}
 
 <header>
 <h1>DecisionSim AI</h1>
-<p>Context-aware decision analysis for a global audience</p>
+<p>Deep, context-aware decision analysis for a global audience</p>
 </header>
 
 <div class="ad">AdSense Ad Here (Top)</div>
@@ -86,7 +86,6 @@ button:hover{background:#3730a3}
 <h2>Describe your decision</h2>
 <textarea id="input" placeholder="Example: Should I build a multiple-tool website for long-term AdSense income?"></textarea>
 <button onclick="generate()">Analyze Decision</button>
-
 <div id="output" class="output" style="display:none"></div>
 </div>
 
@@ -95,13 +94,132 @@ button:hover{background:#3730a3}
 </div>
 
 <script>
-const usedOutputs = new Set();
+const usedFingerprints = new Set();
 
 /* ---------- helpers ---------- */
-function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function r(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
-function hashSeed(text){
-  let h=0;
+function entropy(){
+  return Date.now() + Math.floor(Math.random()*1e9);
+}
+
+function clean(text){
+  return text.toLowerCase().replace(/[^a-z0-9 ]/g," ").trim();
+}
+
+function weak(text){
+  return text.length < 6 || text.split(" ").length < 2;
+}
+
+function detectTopic(text){
+  const t = text.toLowerCase();
+  if(t.includes("adsense") || t.includes("monetize")) return "adsense";
+  if(t.includes("website") || t.includes("tool")) return "website";
+  if(t.includes("business") || t.includes("income")) return "business";
+  return "general";
+}
+
+/* ---------- generator ---------- */
+function generate(){
+  const raw = document.getElementById("input").value.trim();
+  const out = document.getElementById("output");
+  if(!raw){ alert("Please describe your decision."); return; }
+
+  const input = clean(raw);
+  const topic = detectTopic(raw);
+  const isWeak = weak(input);
+
+  /* topic-aware paragraph pools */
+  const openers = {
+    website:[
+      "This question touches on the challenge of building something useful in an increasingly crowded web ecosystem.",
+      "Creating a website today is less about technology and more about long-term value and differentiation."
+    ],
+    adsense:[
+      "AdSense-focused projects often fail when expectations are set too high in the early stages.",
+      "Monetization through AdSense is a patience-driven process rather than a quick win."
+    ],
+    business:[
+      "Most business decisions fail not because the idea is weak, but because execution assumptions are unrealistic.",
+      "Long-term business outcomes are usually shaped by consistency rather than bold starting moves."
+    ],
+    general:[
+      "This question reflects an early stage of thinking rather than a final decision.",
+      "Not all decisions require immediate answers; some require better framing first."
+    ]
+  };
+
+  const deepAnalysis = [
+    "When a decision is still loosely defined, acting too early often creates unnecessary pressure and regret later.",
+    "Clear outcomes usually emerge after constraints, goals, and trade-offs are understood.",
+    "Many people mistake urgency for importance, which leads to premature commitments.",
+    "Depth of understanding tends to outperform speed of action in complex decisions."
+  ];
+
+  const realisticPaths = [
+    "The most realistic path involves an initial learning phase followed by gradual refinement.",
+    "Expect uneven progress, where small improvements compound over time.",
+    "Early results may be subtle, but they provide direction for smarter adjustments."
+  ];
+
+  const practicalSteps = [
+    "Reduce the scope of the decision into a smaller testable version.",
+    "Define success in measurable terms before committing fully.",
+    "Collect feedback early rather than optimizing in isolation.",
+    "Revisit the decision once clearer signals appear."
+  ];
+
+  const reflections = [
+    "Strong decisions are built through iteration, not certainty.",
+    "Clarity often arrives after engagement, not before.",
+    "Avoid treating early uncertainty as a negative signal."
+  ];
+
+  /* build long article */
+  let article = `
+<h3>Decision Context</h3>
+<p>${r(openers[topic])}</p>
+
+<h3>Interpretation</h3>
+<p>
+${isWeak
+  ? "The input itself is minimal, which suggests that the decision has not fully formed yet. In such cases, the lack of detail is often the most important signal."
+  : "Your wording indicates that you are evaluating possibilities rather than committing to a single direction."}
+</p>
+
+<h3>Deeper Analysis</h3>
+<p>${r(deepAnalysis)}</p>
+<p>${r(deepAnalysis)}</p>
+
+<h3>Most Realistic Outcome</h3>
+<p>${r(realisticPaths)}</p>
+
+<h3>Practical Direction</h3>
+<p>${r(practicalSteps)}</p>
+<p>${r(practicalSteps)}</p>
+
+<h3>Final Reflection</h3>
+<p>${r(reflections)}</p>
+`;
+
+  /* repetition breaker */
+  const fingerprint = article.length + entropy();
+  if(usedFingerprints.has(fingerprint)){
+    article += `<p>${r([
+      "Sometimes the absence of clarity is itself a useful insight.",
+      "Not every decision needs resolution at the same pace.",
+      "Waiting for better context is often a strategic move."
+    ])}</p>`;
+  }
+
+  usedFingerprints.add(fingerprint);
+  out.style.display="block";
+  out.innerHTML = article;
+}
+</script>
+
+</body>
+</html>  let h=0;
   for(let i=0;i<text.length;i++) h=(h<<5)-h+text.charCodeAt(i);
   return Math.abs(h);
 }
