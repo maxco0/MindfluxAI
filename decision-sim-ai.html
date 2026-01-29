@@ -3,75 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DecisionSim AI – Smart Decision Engine</title>
-<meta name="description" content="DecisionSim AI is an AI-like decision engine that gives intelligent, non-repeating, context-aware insights without using any API.">
+<title>DecisionSim AI – Intelligent Decision Analysis</title>
+<meta name="description" content="DecisionSim AI provides intelligent, non-repeating decision analysis for an international audience without using any API.">
 
 <style>
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f8fafc;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#f5f7fb;
   color:#1f2937;
-  line-height:1.9
+  line-height:1.85
 }
 .container{
   max-width:1100px;
   margin:auto;
-  padding:20px
+  padding:24px
 }
 header{
   text-align:center;
-  padding:30px 10px
+  padding:32px 10px
 }
 .tool{
-  background:#fff;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.08)
+  background:#ffffff;
+  padding:28px;
+  border-radius:16px;
+  box-shadow:0 15px 35px rgba(0,0,0,.08)
 }
 textarea{
   width:100%;
-  min-height:150px;
-  padding:14px;
+  min-height:160px;
+  padding:16px;
   font-size:16px;
-  border-radius:10px;
+  border-radius:12px;
   border:1px solid #d1d5db
 }
 button{
-  margin-top:15px;
+  margin-top:18px;
   width:100%;
-  padding:14px;
+  padding:15px;
   font-size:16px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   background:#4f46e5;
-  color:#fff;
+  color:#ffffff;
   cursor:pointer
 }
 button:hover{background:#3730a3}
-.result{
-  margin-top:20px;
-  padding:20px;
+.output{
+  margin-top:26px;
+  padding:26px;
   background:#eef2ff;
-  border-radius:10px;
-  white-space:pre-wrap
+  border-radius:14px;
+  box-shadow:inset 0 0 0 1px rgba(79,70,229,.15)
+}
+.section-title{
+  font-weight:600;
+  margin-top:18px;
+  margin-bottom:6px
 }
 .ad{
   background:#e5e7eb;
   padding:20px;
-  margin:25px 0;
+  margin:28px 0;
   text-align:center;
-  border-radius:10px;
+  border-radius:12px;
   font-size:14px
 }
-.article{
-  background:#fff;
-  padding:40px;
-  border-radius:14px;
-  margin-top:40px;
-  box-shadow:0 10px 25px rgba(0,0,0,.06)
-}
-h2,h3{margin-top:30px}
 </style>
 </head>
 
@@ -80,28 +77,131 @@ h2,h3{margin-top:30px}
 
 <header>
 <h1>DecisionSim AI</h1>
-<p>Smart, context-aware decision insights without API or repetition.</p>
+<p>Context-aware decision analysis for a global audience</p>
 </header>
 
 <div class="ad">AdSense Ad Here (Top)</div>
 
 <div class="tool">
-<h2>Describe Your Decision</h2>
-<textarea id="input" placeholder="Example: kya mujhe abhi multiple tool website banana chahiye?"></textarea>
-<button onclick="generate()">Simulate Decision</button>
-<div id="output" class="result" style="display:none"></div>
+<h2>Describe your decision</h2>
+<textarea id="input" placeholder="Example: Should I build a multiple-tool website for long-term AdSense income?"></textarea>
+<button onclick="generate()">Analyze Decision</button>
+
+<div id="output" class="output" style="display:none"></div>
 </div>
 
 <div class="ad">AdSense Ad Here (Bottom)</div>
 
-<div class="article">
-<h2>What Is DecisionSim AI?</h2>
-<p>
-DecisionSim AI is an AI-like decision analysis system built without any external API.
-It is designed for clarity, not prediction. The engine understands user intent,
-adjusts language automatically, and generates non-repeating structured insights.
-</p>
+</div>
 
+<script>
+const usedOutputs = new Set();
+
+/* ---------- helpers ---------- */
+function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+function hashSeed(text){
+  let h=0;
+  for(let i=0;i<text.length;i++) h=(h<<5)-h+text.charCodeAt(i);
+  return Math.abs(h);
+}
+
+function normalizeInput(text){
+  return text.toLowerCase()
+    .replace(/kya|mujhe|banana|chahiye|abhi|baad|karna|hai/gi,"")
+    .trim();
+}
+
+function detectContext(text){
+  const t = text.toLowerCase();
+  return {
+    multiTool: t.includes("multiple") && t.includes("tool"),
+    website: t.includes("website"),
+    adsense: t.includes("adsense"),
+    longTerm: t.includes("long") || t.includes("future"),
+    income: t.includes("income") || t.includes("money"),
+    timing: t.includes("now") || t.includes("start")
+  };
+}
+
+/* ---------- generator ---------- */
+function generate(){
+  const raw = document.getElementById("input").value.trim();
+  const out = document.getElementById("output");
+  if(!raw){ alert("Please describe your decision."); return; }
+
+  const input = normalizeInput(raw);
+  const ctx = detectContext(raw);
+  const seed = hashSeed(input + Date.now());
+
+  let intro = rand([
+    "This decision reflects a long-term strategic question rather than a short-term impulse.",
+    "Your question shows an interest in sustainability, not just quick results.",
+    "This is a decision that depends heavily on execution quality rather than the idea itself."
+  ]);
+
+  let direct = ctx.multiTool && ctx.website
+    ? "Building a multiple-tool website can work, but only when approached with focus and realistic expectations."
+    : "The outcome of this decision will depend more on how you proceed than on whether the idea is good or bad.";
+
+  let analysis = rand([
+    "Many projects fail not because the concept is weak, but because creators attempt to scale too quickly without validating demand.",
+    "In competitive environments, depth and usefulness usually outperform volume and speed.",
+    "Sustainable results tend to come from consistency, iteration, and patience rather than aggressive expansion."
+  ]);
+
+  let realistic = rand([
+    "The most realistic scenario involves slow initial traction followed by gradual improvement as quality compounds.",
+    "Expect a learning-heavy phase before any meaningful results appear.",
+    "Progress is likely to be uneven, with periods of stagnation followed by small breakthroughs."
+  ]);
+
+  let practical = ctx.adsense
+    ? "From an AdSense perspective, fewer high-quality tools supported by strong explanatory content generally perform better than many shallow tools."
+    : "A phased execution strategy allows adjustment without excessive risk.";
+
+  let reminder = rand([
+    "Clarity improves once real-world feedback replaces assumptions.",
+    "Finishing and refining often matters more than expanding.",
+    "Momentum is built through execution, not planning alone."
+  ]);
+
+  let article = `
+<div class="section-title">Decision Overview</div>
+<p>${intro}</p>
+
+<div class="section-title">Direct Insight</div>
+<p>${direct}</p>
+
+<div class="section-title">Key Analysis</div>
+<p>${analysis}</p>
+
+<div class="section-title">Most Realistic Outcome</div>
+<p>${realistic}</p>
+
+<div class="section-title">Practical Direction</div>
+<p>${practical}</p>
+
+<div class="section-title">Final Reminder</div>
+<p>${reminder}</p>
+`;
+
+  if(usedOutputs.has(article)){
+    article += `<p>${rand([
+      "Revisiting assumptions early often prevents wasted effort later.",
+      "Testing on a smaller scale reduces long-term regret.",
+      "Clear constraints improve focus and outcomes."
+    ])}</p>`;
+  }
+
+  usedOutputs.add(article);
+  out.style.display="block";
+  out.innerHTML=article;
+}
+</script>
+
+</body>
+</html>
 <h2>How This Tool Works</h2>
 <p>
 The system analyzes keywords, intent signals, timing words, and risk indicators.
