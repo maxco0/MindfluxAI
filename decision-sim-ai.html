@@ -1,107 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DecisionSim AI | Intelligent Scenario Simulator</title>
-    <meta name="description" content="Simulate future outcomes of your personal and business decisions using AI-driven logic.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Marked.js -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .card { transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3b82f6; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .ad-placeholder { background-color: #e2e8f0; color: #64748b; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; height: 100px; width: 100%; margin: 20px 0; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .prose h3 { color: #1e293b; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.25rem; }
-        .prose p { margin-bottom: 1em; line-height: 1.7; color: #334155; }
-        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; }
-        .prose li { margin-bottom: 0.5em; }
-        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+<title>DecisionSim AI – Real Life Decision Simulator</title>
+<meta name="description" content="DecisionSim AI helps you explore possible outcomes of life and business decisions using real AI-powered scenario analysis.">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f8fafc;
+  color:#1f2937;
+  line-height:1.9;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+header{
+  text-align:center;
+  padding:35px 10px;
+}
+.tool-box{
+  background:#ffffff;
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.08);
+}
+textarea{
+  width:100%;
+  min-height:150px;
+  padding:14px;
+  font-size:16px;
+  border-radius:10px;
+  border:1px solid #d1d5db;
+}
+button{
+  margin-top:18px;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background:#4f46e5;
+  color:#ffffff;
+  cursor:pointer;
+  width:100%;
+}
+button:hover{background:#3730a3;}
+.result{
+  margin-top:22px;
+  padding:20px;
+  background:#eef2ff;
+  border-radius:10px;
+  white-space:pre-wrap;
+}
+.ad{
+  background:#e5e7eb;
+  padding:22px;
+  text-align:center;
+  border-radius:10px;
+  margin:30px 0;
+  font-size:14px;
+}
+.article{
+  background:#ffffff;
+  padding:40px;
+  border-radius:14px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.06);
+  margin-top:45px;
+}
+h2,h3{margin-top:30px;}
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center">
 
-    <!-- Navbar -->
-    <nav class="w-full bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                <h1 class="text-xl font-bold tracking-tight">DecisionSim <span class="text-blue-600">AI</span></h1>
-            </div>
-        </div>
-    </nav>
+<body>
+<div class="container">
 
-    <!-- Top Ad Placeholder -->
-    <div class="max-w-4xl w-full px-4">
-        <div class="ad-placeholder">Advertisement Space (Top)</div>
-    </div>
+<header>
+<h1>DecisionSim AI</h1>
+<p>Explore future possibilities before making important life or business decisions.</p>
+</header>
 
-    <!-- Main Tool Container -->
-    <main class="max-w-3xl w-full px-4 py-8">
-        
-        <!-- Hero Section -->
-        <div class="text-center mb-10">
-            <h2 class="text-4xl font-extrabold mb-3 text-slate-900">Simulate Your Future</h2>
-            <p class="text-lg text-slate-600">Don't guess. Use logic. Enter a difficult decision below, and our AI will simulate the best, worst, and most realistic outcomes.</p>
-        </div>
+<div class="ad">AdSense Ad Here (Top)</div>
 
-        <!-- Input Section -->
-        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
-            <label class="block text-sm font-bold text-slate-700 mb-2">What decision are you facing?</label>
-            <textarea id="userDecision" rows="4" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none text-slate-700" placeholder="e.g., Should I quit my stable job to start a coffee shop? Or: Should I move to a new city for a relationship?"></textarea>
-            
-            <div class="flex justify-between items-center mt-4">
-                <p class="text-xs text-slate-400">Analysis powered by Google Gemini AI.</p>
-                <button onclick="runSimulation()" id="simulateBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition transform hover:scale-105 flex items-center gap-2">
-                    <span>Run Simulation</span>
-                    <div id="btnLoader" class="loader hidden"></div>
-                </button>
-            </div>
-        </div>
+<div class="tool-box">
+<h2>Describe Your Decision</h2>
+<p>Write clearly. Different wording creates different insights.</p>
 
-        <!-- Error Message -->
-        <div id="errorMessage" class="hidden mt-4 bg-red-50 border-l-4 border-red-500 p-4 rounded text-red-700 text-sm"></div>
+<textarea id="decision" placeholder="Example: Should I leave my current job and start freelancing full time?"></textarea>
+<button onclick="simulate()">Simulate Decision</button>
 
-        <!-- Results Section -->
-        <div id="resultsArea" class="hidden mt-10 space-y-8 animate-fade-in">
-            
-            <!-- Summary Header -->
-            <div class="bg-slate-800 text-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-300 mb-1">Decision Summary</h3>
-                <div id="resSummary" class="text-lg font-medium"></div>
-            </div>
+<div id="output" class="result" style="display:none;"></div>
+</div>
 
-            <!-- Scenarios Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Best Case -->
-                <div class="card bg-green-50 border border-green-100 p-6 rounded-xl">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-green-200 text-green-700 p-1.5 rounded-lg text-xs font-bold">OPTIMISTIC</span>
-                        <h4 class="font-bold text-green-900">Best Case</h4>
-                    </div>
-                    <div id="resBest" class="text-sm text-green-800 leading-relaxed"></div>
-                </div>
+<div class="ad">AdSense Ad Here (Bottom)</div>
 
-                <!-- Worst Case -->
-                <div class="card bg-red-50 border border-red-100 p-6 rounded-xl">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-red-200 text-red-700 p-1.5 rounded-lg text-xs font-bold">PESSIMISTIC</span>
-                        <h4 class="font-bold text-red-900">Worst Case</h4>
-                    </div>
-                    <div id="resWorst" class="text-sm text-red-800 leading-relaxed"></div>
-                </div>
+<div class="article">
 
-                <!-- Realistic -->
-                <div class="card bg-blue-50 border border-blue-100 p-6 rounded-xl relative overflow-hidden">
+<h2>What Is DecisionSim AI?</h2>
+<p>
+DecisionSim AI is a practical thinking tool created for people who want clarity before taking important steps in life.
+Most decisions are made under pressure, emotion, or incomplete information.
+This tool introduces structure into that chaos.
+</p>
+
+<p>
+Instead of telling users what to do, DecisionSim AI shows how different outcomes might unfold.
+It helps users pause, reflect, and think beyond immediate emotions.
+</p>
+
+<h2>Why Decision-Making Feels Difficult</h2>
+<p>
+Modern life forces constant decisions — career changes, financial planning, learning new skills,
+relationships, and business risks.
+Many people rush decisions because uncertainty feels uncomfortable.
+</p>
+
+<p>
+DecisionSim AI exists to reduce that mental pressure by showing possible paths clearly.
+Seeing multiple outcomes often reduces fear and improves confidence.
+</p>
+
+<h2>How This Tool Actually Works</h2>
+<p>
+DecisionSim AI uses a real AI language model through a live API connection.
+Every time you enter a decision, the AI evaluates context, wording, and intent.
+</p>
+
+<p>
+Because the AI processes each input independently, responses are never fixed or repetitive.
+Two similar questions can still produce different insights.
+</p>
+
+<h2>Understanding the Output</h2>
+<p>
+The results are structured into clear sections:
+</p>
+
+<ul>
+<li>Decision summary</li>
+<li>Best-case scenario</li>
+<li>Worst-case scenario</li>
+<li>Most realistic outcome</li>
+<li>Key risks</li>
+<li>Emotional impact</li>
+<li>Long-term perspective</li>
+</ul>
+
+<p>
+This structure mirrors how thoughtful humans analyze decisions in real life.
+</p>
+
+<h2>Who Should Use DecisionSim AI?</h2>
+<p>
+This tool is useful for students choosing career paths,
+professionals evaluating opportunities,
+entrepreneurs planning ventures,
+and individuals facing personal crossroads.
+</p>
+
+<p>
+No technical knowledge is required.
+If you can explain your situation in words, the tool can help you think about it.
+</p>
+
+<h2>What This Tool Does NOT Do</h2>
+<p>
+DecisionSim AI does not give professional advice.
+It does not predict the future.
+It does not guarantee success.
+</p>
+
+<p>
+Its purpose is awareness, not authority.
+Users should always apply judgment and seek expert advice for serious matters.
+</p>
+
+<h2>Responsible Usage</h2>
+<p>
+Use this tool as a thinking partner, not a decision-maker.
+Combine insights with real-world research, experience, and values.
+</p>
+
+<p>
+The best decisions come from balanced thinking — not blind trust.
+</p>
+
+<h2>Final Thoughts</h2>
+<p>
+DecisionSim AI is designed to slow you down in a fast world.
+By exploring possibilities calmly, you gain confidence and clarity.
+</p>
+
+<p>
+Good decisions rarely come from speed.
+They come from understanding.
+</p>
+
+</div>
+
+</div>
+
+<script>
+// 🔐 PASTE YOUR NEW GROQ API KEY BELOW
+const API_KEY = "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";
+
+async function simulate(){
+  const input = document.getElementById("decision").value.trim();
+  const out = document.getElementById("output");
+
+  if(!input){
+    alert("Please describe your decision.");
+    return;
+  }
+
+  out.style.display = "block";
+  out.innerText = "Analyzing your decision...";
+
+  try{
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + API_KEY
+      },
+      body:JSON.stringify({
+        model:"llama3-8b-8192",
+        messages:[
+          {
+            role:"system",
+            content:"You analyze decisions thoughtfully. Responses must be unique, contextual, and non-repetitive. Do not give advice."
+          },
+          {
+            role:"user",
+            content:`Analyze this decision with structured insights:\n\n${input}`
+          }
+        ],
+        temperature:0.9
+      })
+    });
+
+    const data = await res.json();
+    out.innerText = data.choices[0].message.content;
+
+  }catch(e){
+    out.innerText = "Error: Unable to connect to AI. Check API key or network.";
+  }
+}
+</script>
+
+</body>
+</html>                <div class="card bg-blue-50 border border-blue-100 p-6 rounded-xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold">MOST LIKELY</div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="bg-blue-200 text-blue-700 p-1.5 rounded-lg text-xs font-bold">REALISTIC</span>
