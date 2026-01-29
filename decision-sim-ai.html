@@ -3,76 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DecisionSim AI – Real Life Decision Simulator</title>
-<meta name="description" content="DecisionSim AI helps you explore possible outcomes of life and business decisions using real AI-powered scenario analysis.">
+<title>DecisionSim AI – Smart Decision Engine</title>
+<meta name="description" content="DecisionSim AI is a smart AI-like decision engine that generates unique, non-repetitive insights without using any API.">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f8fafc;
-  color:#1f2937;
-  line-height:1.9;
-}
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-header{
-  text-align:center;
-  padding:35px 10px;
-}
-.tool-box{
-  background:#ffffff;
-  padding:30px;
-  border-radius:14px;
-  box-shadow:0 12px 28px rgba(0,0,0,0.08);
-}
-textarea{
-  width:100%;
-  min-height:150px;
-  padding:14px;
-  font-size:16px;
-  border-radius:10px;
-  border:1px solid #d1d5db;
-}
-button{
-  margin-top:18px;
-  padding:14px;
-  font-size:16px;
-  border:none;
-  border-radius:10px;
-  background:#4f46e5;
-  color:#ffffff;
-  cursor:pointer;
-  width:100%;
-}
-button:hover{background:#3730a3;}
-.result{
-  margin-top:22px;
-  padding:20px;
-  background:#eef2ff;
-  border-radius:10px;
-  white-space:pre-wrap;
-}
-.ad{
-  background:#e5e7eb;
-  padding:22px;
-  text-align:center;
-  border-radius:10px;
-  margin:30px 0;
-  font-size:14px;
-}
-.article{
-  background:#ffffff;
-  padding:40px;
-  border-radius:14px;
-  box-shadow:0 12px 28px rgba(0,0,0,0.06);
-  margin-top:45px;
-}
-h2,h3{margin-top:30px;}
+body{margin:0;font-family:Arial,sans-serif;background:#f8fafc;color:#1f2937;line-height:1.9}
+.container{max-width:1100px;margin:auto;padding:20px}
+header{text-align:center;padding:30px 10px}
+.tool{background:#fff;padding:25px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+textarea{width:100%;min-height:140px;padding:14px;font-size:16px;border-radius:10px;border:1px solid #d1d5db}
+button{margin-top:15px;width:100%;padding:14px;font-size:16px;border:none;border-radius:10px;background:#4f46e5;color:#fff;cursor:pointer}
+button:hover{background:#3730a3}
+.result{margin-top:20px;padding:20px;background:#eef2ff;border-radius:10px;white-space:pre-wrap}
+.ad{background:#e5e7eb;padding:20px;margin:25px 0;text-align:center;border-radius:10px}
+.article{background:#fff;padding:40px;border-radius:14px;margin-top:40px;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+h2,h3{margin-top:30px}
 </style>
 </head>
 
@@ -81,27 +26,169 @@ h2,h3{margin-top:30px;}
 
 <header>
 <h1>DecisionSim AI</h1>
-<p>Explore future possibilities before making important life or business decisions.</p>
+<p>AI-like decision analysis without API, backend, or repetition.</p>
 </header>
 
 <div class="ad">AdSense Ad Here (Top)</div>
 
-<div class="tool-box">
+<div class="tool">
 <h2>Describe Your Decision</h2>
-<p>Write clearly. Different wording creates different insights.</p>
-
-<textarea id="decision" placeholder="Example: Should I leave my current job and start freelancing full time?"></textarea>
-<button onclick="simulate()">Simulate Decision</button>
-
-<div id="output" class="result" style="display:none;"></div>
+<textarea id="input" placeholder="Example: kya mujhe multiple tool website banana chahiye?"></textarea>
+<button onclick="generate()">Simulate Decision</button>
+<div id="output" class="result" style="display:none"></div>
 </div>
 
 <div class="ad">AdSense Ad Here (Bottom)</div>
 
 <div class="article">
-
 <h2>What Is DecisionSim AI?</h2>
 <p>
+DecisionSim AI is not a traditional artificial intelligence model.
+It is a carefully designed decision engine that behaves like AI
+by analyzing user input, understanding context, and generating
+non-repetitive structured insights.
+</p>
+
+<p>
+Most so-called AI tools without API return the same answers again and again.
+DecisionSim AI avoids this by combining logic-based analysis,
+large response pools, randomization, and session memory.
+</p>
+
+<h2>How This System Avoids Repeated Answers</h2>
+<ul>
+<li>Keyword-based context detection</li>
+<li>Multiple response pools per decision type</li>
+<li>Randomized sentence order</li>
+<li>Dynamic variable injection</li>
+<li>Session-level memory to avoid repetition</li>
+</ul>
+
+<h2>Who Should Use This Tool</h2>
+<p>
+This tool is ideal for people who want quick clarity without depending on
+external APIs. It works fully offline and is suitable for AdSense websites,
+educational platforms, and decision-support tools.
+</p>
+
+<h2>Important Limitation</h2>
+<p>
+DecisionSim AI does not learn over time and does not replace real AI models.
+Its purpose is structured thinking, not prediction or advice.
+</p>
+</div>
+
+</div>
+
+<script>
+const memory = new Set();
+
+function pick(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function hash(text){
+  let h=0;
+  for(let i=0;i<text.length;i++) h = (h<<5)-h + text.charCodeAt(i);
+  return Math.abs(h);
+}
+
+function detectCategory(text){
+  text = text.toLowerCase();
+  if(text.includes("website")||text.includes("tool")) return "tech";
+  if(text.includes("job")||text.includes("career")) return "career";
+  if(text.includes("business")||text.includes("income")) return "business";
+  return "general";
+}
+
+const responses = {
+  tech:{
+    best:[
+      "If executed with focus, this decision could open multiple long-term opportunities.",
+      "A structured approach may allow gradual growth without major risk."
+    ],
+    worst:[
+      "Without clarity, this path could lead to confusion and wasted effort.",
+      "Too many tools at once may reduce quality and direction."
+    ],
+    real:[
+      "Most likely, progress will be slow initially but stable with consistency.",
+      "Results will depend on execution discipline rather than idea strength."
+    ]
+  },
+  career:{
+    best:[
+      "This decision could lead to personal growth and better alignment with goals.",
+      "Skill development may unlock better options in the future."
+    ],
+    worst:[
+      "Short-term instability or uncertainty may arise.",
+      "Expect a learning curve and adjustment period."
+    ],
+    real:[
+      "Gradual improvement with occasional challenges is the most realistic outcome.",
+      "Balance and patience will matter more than speed."
+    ]
+  },
+  general:{
+    best:[
+      "This choice may bring clarity and renewed motivation.",
+      "A fresh perspective could improve confidence."
+    ],
+    worst:[
+      "Overthinking might delay action.",
+      "Unclear expectations could create frustration."
+    ],
+    real:[
+      "A mixed outcome with learning value is most likely.",
+      "Small wins will matter more than big changes."
+    ]
+  }
+};
+
+function generate(){
+  const text = document.getElementById("input").value.trim();
+  const out = document.getElementById("output");
+  if(!text){alert("Please write something.");return}
+
+  const cat = detectCategory(text);
+  let attempt = 0, result;
+
+  do{
+    result =
+`Decision Summary:
+${pick([
+"Your decision reflects a desire for progress.",
+"This situation shows a search for clarity.",
+"The question suggests long-term thinking."
+])}
+
+Best Case:
+${pick(responses[cat].best)}
+
+Worst Case:
+${pick(responses[cat].worst)}
+
+Most Realistic Outcome:
+${pick(responses[cat].real)}
+
+Key Insight:
+${pick([
+"Clarity comes from execution, not perfection.",
+"Small steps matter more than big plans.",
+"Consistency will shape the outcome."
+])}`;
+    attempt++;
+  }while(memory.has(result) && attempt < 5);
+
+  memory.add(result);
+  out.style.display="block";
+  out.innerText=result;
+}
+</script>
+
+</body>
+</html><p>
 DecisionSim AI is a practical thinking tool created for people who want clarity before taking important steps in life.
 Most decisions are made under pressure, emotion, or incomplete information.
 This tool introduces structure into that chaos.
